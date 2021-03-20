@@ -1,0 +1,40 @@
+{
+  "name": "cowipe-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "author": "Daniel Bertini <danielbertini@gmail.com>",
+  "license": "UNLICENSED",
+  "scripts": {
+    "build": "npm run install",
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "@sendgrid/mail": "latest",
+    "aws-sdk": "latest",
+    "axios": "latest",
+    "bcrypt": "latest",
+    "body-parser": "latest",
+    "bugsnag": "latest",
+    "cheerio": "latest",
+    "cors": "latest",
+    "eventregistry": "latest",
+    "express": "latest",
+    "express-jwt": "latest",
+    "formidable": "^1.2.2",
+    "http": "^0.0.1-security",
+    "i18n": "^0.13.2",
+    "jwt-simple": "latest",
+    "line-by-line": "latest",
+    "moment": "latest",
+    "mongodb": "latest",
+    "node-fetch": "latest",
+    "sharp": "^0.27.0",
+    "slugify": "latest",
+    "socket.io": "^3.1.1",
+    "stripe": "^8.138.0",
+    "uuid": "latest",
+    "validator": "latest",
+    "ws": "^7.4.3"
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "app": {
+    "name": "cowipe.com",
+    "url": "https://cowipe.com",
+    "email": "no-reply@cowipe.com"
+  },
+  "api": {
+    "environment": "DEVELOPMENT",
+    "port": 8080
+  },
+  "jwt": {
+    "secret": "81dc98b2-477d-11ea-b77f-2e728ce88125",
+    "expiresIn": 0
+  },
+  "keys": {
+    "bugsnag": "856eb1fb22382b9b5f873bd174d52234",
+    "eventRegistry": "493cdfe4-a43b-4018-8eab-a5f78aa74e0f"    
+  },
+  "database": {
+    "mongo": {
+      "database": "agarrei",
+      "url": "mongodb+srv://danielbertini:wReZuviJMCXW80lS@cluster0.f5ijb.mongodb.net/<dbname>?retryWrites=true&w=majority"
+    }
+  },
+  "spaces": {
+    "key": "ST5YH7JE4JXCRW7L2FMX",
+    "secret": "ObLiXf5CfgaQqSkF9C9pReXWX9VVz3L8NlnPRafgHtI"
+  },
+  "google": {
+    "key": "AIzaSyCmpFl5xEwNJzj8H--rjsPdfOjJ31-b4js"
+  },
+  "ipstack": {
+    "key": "274cae0fa7ae22613cecf077b06873ee"
+  },
+  "stripe": {
+    "key": "sk_test_B5019mXAgxlexpNAaNT6HSfo"
+  },
+  "sendgrid": {
+    "api_key": "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"
+  }
+}
