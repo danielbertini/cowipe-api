@@ -6,7 +6,7 @@
   "author": "Daniel Bertini <danielbertini@gmail.com>",
   "license": "UNLICENSED",
   "scripts": {
-    "build": "npm run install",
+    "build": "npm install",
     "start": "node app.js"
   },
   "dependencies": {
