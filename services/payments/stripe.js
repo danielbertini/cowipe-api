@@ -15,7 +15,7 @@ exports.createPaymentIntent = async (request, response) => {
         } else {
           getStripeCustomerId(request, decode.id)
             .then((stripeCustomerId) =>
-              requestPaymentIntent(request, stripeCustomerId)
+              requestPaymentIntent(request, stripeCustomerId, decode.id)
             )
             .then((clientSecret) => {
               response.status(200).send({
@@ -89,7 +89,7 @@ const getStripeCustomerId = (request, userId) => {
   });
 };
 
-const requestPaymentIntent = (request, stripeCustomerId) => {
+const requestPaymentIntent = (request, stripeCustomerId, userId) => {
   return new Promise((resolve, reject) => {
     try {
       db.collection("coins")
@@ -104,8 +104,8 @@ const requestPaymentIntent = (request, stripeCustomerId) => {
               amount: result.price,
               currency: "usd",
               metadata: {
-                userId: "xxx",
-                coinId: "xxx",
+                userId: userId,
+                coinId: result._id,
               },
             });
             return resolve(paymentIntent.client_secret);
