@@ -75,7 +75,7 @@ const charge = (data) => {
       })
       .then((coin) => {
         if (coin && coin._id) {
-          if (parseInt(coin.price) === parseInt(data.amount)) {
+          if (parseFloat(coin.price) === parseFloat(data.amount)) {
             db.collection("users")
               .findOne({
                 _id: ObjectId(data.metadata.userId),
@@ -83,7 +83,7 @@ const charge = (data) => {
               .then((user) => {
                 if (user && user._id) {
                   let document = {
-                    balance: parseInt(user.balance + coin.quantity),
+                    balance: parseFloat(user.balance + coin.quantity),
                   };
                   db.collection("users").updateOne(
                     { _id: ObjectId(user._id) },
