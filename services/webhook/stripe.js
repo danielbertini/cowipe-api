@@ -86,7 +86,7 @@ const charge = (data) => {
                     balance: parseInt(user.balance + coin.quantity),
                   };
                   db.collection("users").updateOne(
-                    { _id: ObjectId(userId) },
+                    { _id: ObjectId(user._id) },
                     { $set: document },
                     { upsert: false },
                     (error) => {
