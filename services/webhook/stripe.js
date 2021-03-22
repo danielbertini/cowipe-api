@@ -25,8 +25,8 @@ const persistIntent = (data) => {
   try {
     let document = {
       intentId: data.id,
-      userId: ObjectId(data.metadata.userId),
-      coinId: ObjectId(data.metadata.coinId),
+      _userId: ObjectId(data.metadata.userId),
+      _coinId: ObjectId(data.metadata.coinId),
       status: data.status,
     };
     db.collection("intents").insertOne(document, (error) => {
@@ -69,24 +69,49 @@ const updateIntent = (data) => {
 
 const charge = (data) => {
   try {
-    console.log(data);
-    return;
-    // let document = {
-    //   status: data.status,
-    // };
-    // db.collection("intents").updateOne(
-    //   { intentId: data.id },
-    //   { $set: document },
-    //   { upsert: false },
-    //   (error) => {
-    //     if (error) {
-    //       console.error(error);
-    //       return;
-    //     } else {
-    //       return;
-    //     }
-    //   }
-    // );
+    db.collection("coins")
+      .findOne({
+        _id: ObjectId(data.metadata.coinId),
+      })
+      .then((coin) => {
+        if (coin && coin._id) {
+          if (parseInt(coin.price) === parseInt(data.amount)) {
+            db.collection("users")
+              .findOne({
+                _id: ObjectId(data.metadata.userId),
+              })
+              .then((user) => {
+                if (user && user._id) {
+                  let document = {
+                    balance: parseInt(user.balance + coin.quantity),
+                  };
+                  db.collection("users").updateOne(
+                    { _id: ObjectId(userId) },
+                    { $set: document },
+                    { upsert: false },
+                    (error) => {
+                      if (error) {
+                        console.error(error);
+                        return;
+                      } else {
+                        return;
+                      }
+                    }
+                  );
+                } else {
+                  console.error(error);
+                  return;
+                }
+              });
+          } else {
+            console.error(error);
+            return;
+          }
+        } else {
+          console.error(error);
+          return;
+        }
+      });
   } catch (error) {
     console.error(error);
     return;
