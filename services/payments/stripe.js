@@ -104,8 +104,8 @@ const requestPaymentIntent = (request, stripeCustomerId, userId) => {
               amount: result.price,
               currency: "usd",
               metadata: {
-                userId: userId,
-                coinId: result._id,
+                userId: userId.toString(),
+                coinId: result._id.toString(),
               },
             });
             return resolve(paymentIntent.client_secret);
