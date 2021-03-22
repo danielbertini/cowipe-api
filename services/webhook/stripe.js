@@ -46,7 +46,7 @@ const updateIntent = (data) => {
       status: data.status,
     };
     db.collection("intents").updateOne(
-      { intentId: id },
+      { intentId: data.id },
       { $set: document },
       { upsert: false },
       (error) => {
