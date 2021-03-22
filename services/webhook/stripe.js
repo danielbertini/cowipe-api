@@ -82,9 +82,16 @@ const charge = (data) => {
               })
               .then((user) => {
                 if (user && user._id) {
-                  let document = {
-                    balance: parseFloat(user.balance + coin.quantity),
-                  };
+                  let document;
+                  if (user.balance) {
+                    document = {
+                      balance: parseFloat(user.balance + coin.quantity),
+                    };
+                  } else {
+                    document = {
+                      balance: parseFloat(0 + coin.quantity),
+                    };
+                  }
                   db.collection("users").updateOne(
                     { _id: ObjectId(user._id) },
                     { $set: document },
