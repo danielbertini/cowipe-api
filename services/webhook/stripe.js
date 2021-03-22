@@ -20,25 +20,20 @@ exports.do = (request, response) => {
 
 const persistIntent = (data) => {
   try {
-    console.log(data);
     let document = {
       intentId: data.id,
       userId: ObjectId(data.metadata.userId),
       coinId: ObjectId(data.metadata.coinId),
       status: data.status,
     };
-    db.collection("intents").insertOne(
-      { $set: document },
-      { upsert: false },
-      (error) => {
-        if (error) {
-          console.error(error);
-          return;
-        } else {
-          return;
-        }
+    db.collection("intents").insertOne(document, (error) => {
+      if (error) {
+        console.log(error);
+        return;
+      } else {
+        return;
       }
-    );
+    });
   } catch (error) {
     console.error(error);
     return;
