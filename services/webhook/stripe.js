@@ -75,45 +75,40 @@ const charge = (data) => {
       })
       .then((coin) => {
         if (coin && coin._id) {
-          if (parseFloat(coin.price) === parseFloat(data.amount)) {
-            db.collection("users")
-              .findOne({
-                _id: ObjectId(data.metadata.userId),
-              })
-              .then((user) => {
-                if (user && user._id) {
-                  let document;
-                  if (user.balance) {
-                    document = {
-                      balance: parseFloat(user.balance + coin.quantity),
-                    };
-                  } else {
-                    document = {
-                      balance: parseFloat(0 + coin.quantity),
-                    };
-                  }
-                  db.collection("users").updateOne(
-                    { _id: ObjectId(user._id) },
-                    { $set: document },
-                    { upsert: false },
-                    (error) => {
-                      if (error) {
-                        console.error(error);
-                        return;
-                      } else {
-                        return;
-                      }
-                    }
-                  );
+          db.collection("users")
+            .findOne({
+              _id: ObjectId(data.metadata.userId),
+            })
+            .then((user) => {
+              if (user && user._id) {
+                let document;
+                if (user.balance) {
+                  document = {
+                    balance: parseFloat(user.balance + coin.quantity),
+                  };
                 } else {
-                  console.error(error);
-                  return;
+                  document = {
+                    balance: parseFloat(0 + coin.quantity),
+                  };
                 }
-              });
-          } else {
-            console.error(error);
-            return;
-          }
+                db.collection("users").updateOne(
+                  { _id: ObjectId(user._id) },
+                  { $set: document },
+                  { upsert: false },
+                  (error) => {
+                    if (error) {
+                      console.error(error);
+                      return;
+                    } else {
+                      return;
+                    }
+                  }
+                );
+              } else {
+                console.error(error);
+                return;
+              }
+            });
         } else {
           console.error(error);
           return;

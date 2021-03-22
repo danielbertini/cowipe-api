@@ -101,8 +101,8 @@ const requestPaymentIntent = (request, stripeCustomerId, userId) => {
             const paymentIntent = await stripe.paymentIntents.create({
               customer: stripeCustomerId,
               setup_future_usage: "off_session",
-              amount: result.price,
-              currency: "usd",
+              amount: result.amount[request.headers["accept-language"]],
+              currency: result.currency[request.headers["accept-language"]],
               metadata: {
                 userId: userId.toString(),
                 coinId: result._id.toString(),
