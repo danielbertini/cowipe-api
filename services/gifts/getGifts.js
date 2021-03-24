@@ -79,7 +79,11 @@ const getGifts = (request, id) => {
   return new Promise((resolve, reject) => {
     try {
       db.collection("gifts")
-        .findOne({})
+        .find({})
+        .sort({
+          amount: 1,
+        })
+        .toArray()
         .then((result) => {
           if (result) {
             _gifts = result;
