@@ -89,8 +89,7 @@ const getGifts = (request, id) => {
             _gifts = result;
             return resolve();
           } else {
-            return resolve();
-            // return reject([request.__("unavailableService"), null]);
+            return reject([request.__("unavailableService"), null]);
           }
         });
     } catch (error) {
