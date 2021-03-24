@@ -23,7 +23,7 @@ exports.do = (request, response) => {
                 success: true,
                 profile: _profile,
                 gifts: _gifts,
-                balance: _balance,
+                balance: _balance ? _balance : 0,
               });
             })
             .catch((result) => {
