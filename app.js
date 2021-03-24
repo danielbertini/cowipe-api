@@ -112,6 +112,9 @@ MongoClient.connect(config.database.mongo.url, {
     const webhookRoutes = require("./routes/webhook");
     app.use("/webhook", webhookRoutes);
 
+    const giftsRoutes = require("./routes/gifts");
+    app.use("/gifts", giftsRoutes);
+
     // Setup catch errors
 
     app.use((error, request, response, next) => {
