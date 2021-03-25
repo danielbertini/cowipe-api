@@ -17,6 +17,7 @@
 	"email.verificationCode.subject": "Olá {{name}}, seu código de verificação é {{code}}.",
 	"email.verificationCode.text": "Olá {{name}}, seu código de verificação é {{code}}. Atenciosamente, Equipe {{company}}.",
 	"email.verificationCode.html": "Olá {{name}}, seu código de verificação é <strong>{{code}}</strong>.<br /><br />Atenciosamente,<br />Equipe {{company}}.",
+	"youDontHaveEnoughCoins": "Você não possui moedas suficiente.",
 	"code": "código",
 	"blocked": "Bloqueado",
 	"connection.blockedUser": "Conexão indisponível",
