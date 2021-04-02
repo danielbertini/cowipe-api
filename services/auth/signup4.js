@@ -322,7 +322,7 @@ const persistUser = (request, zodiac) => {
           _orientation: ObjectId(params.orientation),
           _maritalStatus: ObjectId(params.maritalStatus),
           _relationship: ObjectId(params.relationship),
-          _sugar: ObjectId(params.sugar),
+          _sugar: params.sugar ? ObjectId(params.sugar) : null,
         },
         appearance: {
           height: parseInt(params.height),
