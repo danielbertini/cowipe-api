@@ -2,7 +2,7 @@
   "app": {
     "name": "cowipe.com",
     "url": "https://cowipe.com",
-    "email": "no-reply@cowipe.com"
+    "email": "talk@cowipe.com"
   },
   "api": {
     "environment": "DEVELOPMENT",
@@ -35,7 +35,7 @@
   "stripe": {
     "key": "sk_live_7QQZoIEsOxK9YXXXit6u8byF"
   },
-  "sendgrid": {
-    "api_key": "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"
+  "postmark": {
+    "api_key": "dcbd60c9-918c-4a92-869c-7c087414d170"
   }
 }

@@ -48,7 +48,7 @@ const checkParams = (request) => {
     try {
       let params = request.body;
       let rejects = {};
-      if (validate.isEmpty(params.code)) {
+      if (validate.isEmpty(params.code) && params.checkCodeLater === false) {
         rejects["code"] = request.__("requiredField");
       }
       if (Object.entries(rejects).length === 0) {
@@ -67,21 +67,25 @@ const checkCode = (request) => {
   return new Promise((resolve, reject) => {
     try {
       let params = request.body;
-      db.collection("verificationCodes")
-        .findOne({
-          email: sanitizer.string(params.email),
-          code: parseFloat(params.code),
-        })
-        .then((result) => {
-          if (result) {
-            return resolve();
-          } else {
-            return reject([
-              request.__("checkTheForm"),
-              { code: request.__("invalidCode") },
-            ]);
-          }
-        });
+      if (params.checkCodeLater === false) {
+        db.collection("verificationCodes")
+          .findOne({
+            email: sanitizer.string(params.email),
+            code: parseFloat(params.code),
+          })
+          .then((result) => {
+            if (result) {
+              return resolve();
+            } else {
+              return reject([
+                request.__("checkTheForm"),
+                { code: request.__("invalidCode") },
+              ]);
+            }
+          });
+      } else {
+        return resolve();
+      }
     } catch (error) {
       console.log(error);
       return reject([request.__("unavailableService"), null]);
@@ -93,28 +97,32 @@ const updateCodeChecked = (request) => {
   return new Promise((resolve, reject) => {
     try {
       let params = request.body;
-      const query = {
-        email: sanitizer.string(params.email),
-        code: parseFloat(params.code),
-      };
-      const update = {
-        $set: {
-          checked: true,
-        },
-      };
-      db.collection("verificationCodes")
-        .updateOne(query, update)
-        .then((result) => {
-          if (result && result.result.ok === 1) {
-            return resolve();
-          } else {
+      if (params.checkCodeLater === false) {
+        const query = {
+          email: sanitizer.string(params.email),
+          code: parseFloat(params.code),
+        };
+        const update = {
+          $set: {
+            checked: true,
+          },
+        };
+        db.collection("verificationCodes")
+          .updateOne(query, update)
+          .then((result) => {
+            if (result && result.result.ok === 1) {
+              return resolve();
+            } else {
+              return reject([request.__("unavailableService"), null]);
+            }
+          })
+          .catch((error) => {
+            console.log(error);
             return reject([request.__("unavailableService"), null]);
-          }
-        })
-        .catch((error) => {
-          console.log(error);
-          return reject([request.__("unavailableService"), null]);
-        });
+          });
+      } else {
+        return resolve();
+      }
     } catch (error) {
       console.log(error);
       return reject([request.__("unavailableService"), null]);
