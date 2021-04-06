@@ -33,5 +33,8 @@
 	"email.connectionRequest.html": "Hello {{to}}, {{from}} requested a connection with you, to know more access your profile and check the activity panel.<br /><br />Best regards,<br />{{company}} Team.",
 	"email.connectionAccepted.subject": "Cowipe - {{to}}, your connection request has been accepted.",
 	"email.connectionAccepted.text": "Hello {{to}}, {{from}} accepted your connection request, to know more access your profile and check the activity panel. Best regards, {{company}} Team.",
-	"email.connectionAccepted.html": "Hello {{to}}, {{from}} accepted your connection request, to know more access your profile and check the activity panel.<br /><br />Best regards,<br />{{company}} Team."
+	"email.connectionAccepted.html": "Hello {{to}}, {{from}} accepted your connection request, to know more access your profile and check the activity panel.<br /><br />Best regards,<br />{{company}} Team.",
+	"email.giftReceived.subject": "Cowipe - {{to}}, you received a gift.",
+	"email.giftReceived.text": "Hello {{to}}, {{from}} sent you a gift, to find out more, access your profile and check the gift menu. Best regards, {{company}} Team.",
+	"email.giftReceived.html": "Hello {{to}}, {{from}} sent you a gift, to find out more, access your profile and check the gift menu.<br /><br />Best regards,<br />{{company}} Team."
 }
