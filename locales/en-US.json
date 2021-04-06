@@ -30,5 +30,8 @@
 	"email.viewProfile.html": "Hello {{to}}, {{from}} accessed your profile, for more information on {{from}} access your profile and check your activity panel.<br /><br />Best regards,<br />{{company}} Team.",
 	"email.connectionRequest.subject": "Cowipe - {{to}}, you have a new connection request.",
 	"email.connectionRequest.text": "Hello {{to}}, {{from}} requested a connection with you, to know more access your profile and check the activity panel. Best regards, {{company}} Team.",
-	"email.connectionRequest.html": "Hello {{to}}, {{from}} requested a connection with you, to know more access your profile and check the activity panel.<br /><br />Best regards,<br />{{company}} Team."
+	"email.connectionRequest.html": "Hello {{to}}, {{from}} requested a connection with you, to know more access your profile and check the activity panel.<br /><br />Best regards,<br />{{company}} Team.",
+	"email.connectionAccepted.subject": "Cowipe - {{to}}, your connection request has been accepted.",
+	"email.connectionAccepted.text": "Hello {{to}}, {{from}} accepted your connection request, to know more access your profile and check the activity panel. Best regards, {{company}} Team.",
+	"email.connectionAccepted.html": "Hello {{to}}, {{from}} accepted your connection request, to know more access your profile and check the activity panel.<br /><br />Best regards,<br />{{company}} Team."
 }

@@ -30,5 +30,8 @@
 	"email.viewProfile.html": "Olá {{to}}, {{from}} acessou seu perfil, para ter mais informações sobre {{from}} acesse seu perfil e verifique o painel de atividades.<br /><br /> Atenciosamente,<br />Equipe {{company}}.",
 	"email.connectionRequest.subject": "Cowipe - {{to}}, você tem um novo pedido de conexão.",
 	"email.connectionRequest.text": "Olá {{to}}, {{from}} solicitou uma conexão com você, para saber mais acesse seu perfil e verifique o painel de atividades. Atenciosamente, Equipe {{company}}.",
-	"email.connectionRequest.html": "Olá {{to}}, {{from}} solicitou uma conexão com você, para saber mais acesse seu perfil e verifique o painel de atividades.<br /><br /> Atenciosamente,<br />Equipe {{company}}."
+	"email.connectionRequest.html": "Olá {{to}}, {{from}} solicitou uma conexão com você, para saber mais acesse seu perfil e verifique o painel de atividades.<br /><br /> Atenciosamente,<br />Equipe {{company}}.",
+	"email.connectionAccepted.subject": "Cowipe - {{to}}, seu pedido de conexão foi aceito.",
+	"email.connectionAccepted.text": "Olá {{to}}, {{from}} aceitou seu pedido de conexão, para saber mais acesse seu perfil e verifique o painel de atividades. Atenciosamente, Equipe {{company}}.",
+	"email.connectionAccepted.html": "Olá {{to}}, {{from}} aceitou seu pedido de conexão, para saber mais acesse seu perfil e verifique o painel de atividades.<br /><br /> Atenciosamente,<br />Equipe {{company}}."
 }
