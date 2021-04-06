@@ -33,5 +33,5 @@
 	"email.connectionRequest.html": "Hola {{to}}, {{from}} solicitó una conexión contigo, para obtener más información accede a tu perfil y consulta el panel de actividad.<br /><br /> Atentamente,<br />Equipo {{company}}.",
   "email.connectionAccepted.subject": "Cowipe - {{to}}, su solicitud de conexión ha sido aceptada.",
 	"email.connectionAccepted.text": "Hola {{to}}, {{from}} aceptó su solicitud de conexión, para obtener más información accede a tu perfil y consulta el panel de actividad. Atentamente, Equipo {{company}}.",
-	"email.connectionAccepted.html": "Hola {{to}}, {{from}} aceptó su solicitud de conexión, para obtener más información accede a tu perfil y consulta el panel de actividad.<br /><br /> Atentamente,<br />Equipo {{company}}.",
+	"email.connectionAccepted.html": "Hola {{to}}, {{from}} aceptó su solicitud de conexión, para obtener más información accede a tu perfil y consulta el panel de actividad.<br /><br /> Atentamente,<br />Equipo {{company}}."
 }
