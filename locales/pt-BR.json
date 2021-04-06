@@ -14,9 +14,6 @@
 	"usernameAlreadyInUse": "Este usuário já está em uso",
 	"passwordsAreNotTheSame": "As senhas não são iguais",
 	"locationFail": "Não conseguimos obter sua localização",
-	"email.verificationCode.subject": "Olá {{name}}, seu código de verificação é {{code}}.",
-	"email.verificationCode.text": "Olá {{name}}, seu código de verificação é {{code}}. Atenciosamente, Equipe {{company}}.",
-	"email.verificationCode.html": "Olá {{name}}, seu código de verificação é <strong>{{code}}</strong>.<br /><br />Atenciosamente,<br />Equipe {{company}}.",
 	"youDontHaveEnoughCoins": "Você não possui moedas suficiente.",
 	"code": "código",
 	"blocked": "Bloqueado",
@@ -24,5 +21,11 @@
 	"connection.reserved": "Usuário em modo reservado",
 	"connection.pendding": "Aguardando aprovação",
 	"connection.connected": "Já conectados",
-	"connection.alreadyReported": "Já reportado"
+	"connection.alreadyReported": "Já reportado",
+	"email.verificationCode.subject": "Cowipe - Olá {{name}}, seu código de verificação é {{code}}.",
+	"email.verificationCode.text": "Olá {{name}}, seu código de verificação é {{code}}. Atenciosamente, Equipe {{company}}.",
+	"email.verificationCode.html": "Olá {{name}}, seu código de verificação é <strong>{{code}}</strong>.<br /><br />Atenciosamente,<br />Equipe {{company}}.",
+	"email.viewProfile.subject": "Cowipe - {{from}}, você tem uma nova visita.",
+	"email.viewProfile.text": "Olá {{from}}, {{to}} acessou seu perfil, para ter mais informações sobre {{to}} acesse seu perfil e verifique o painel de atividades. Atenciosamente, Equipe {{company}}.",
+	"email.viewProfile.html": "Olá {{from}}, {{to}} acessou seu perfil, para ter mais informações sobre {{to}} acesse seu perfil e verifique o painel de atividades.<br /><br /> Atenciosamente,<br />Equipe {{company}}."
 }
