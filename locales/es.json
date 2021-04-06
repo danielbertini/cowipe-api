@@ -27,5 +27,8 @@
   "email.verificationCode.html": "Hola {{name}}, tu código de verificación es <strong>{{code}}</strong>.<br /><br />Atentamente,<br />Equipo de {{company}}.",
 	"email.viewProfile.subject": "COWIPE - {{to}}, tienes una nueva visita.",
 	"email.viewProfile.text": "Hola {{to}}, {{from}} accedió a su perfil, para obtener más información sobre {{from}} acceda a su perfil y consulte su panel de actividad. Atentamente, Equipo {{company}}.",
-	"email.viewProfile.html": "Hola {{to}}, {{from}} accedió a su perfil, para obtener más información sobre {{from}} acceda a su perfil y consulte su panel de actividad.<br /><br />Atentamente,<br />Equipo {{company}}."
+	"email.viewProfile.html": "Hola {{to}}, {{from}} accedió a su perfil, para obtener más información sobre {{from}} acceda a su perfil y consulte su panel de actividad.<br /><br />Atentamente,<br />Equipo {{company}}.",
+  "email.connectionRequest.subject": "Cowipe - {{to}}, tienes una nueva solicitud de conexión.",
+	"email.connectionRequest.text": "Hola {{to}}, {{from}} solicitó una conexión contigo, para obtener más información accede a tu perfil y consulta el panel de actividad. Atentamente, Equipo {{company}}.",
+	"email.connectionRequest.html": "Hola {{to}}, {{from}} solicitó una conexión contigo, para obtener más información accede a tu perfil y consulta el panel de actividad.<br /><br /> Atentamente,<br />Equipo {{company}}."
 }

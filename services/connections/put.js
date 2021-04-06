@@ -1,3 +1,6 @@
+const postMark = require("postmark");
+const postMarkClient = new postMark.ServerClient(config.postmark.api_key);
+
 var _connection = null;
 
 exports.do = (request, response) => {
@@ -168,15 +171,16 @@ const createActivity = (request, userId) => {
       };
       db.collection("activities").insertOne(document, (error) => {
         if (error) {
-          console.log(error);
+          console.error(error);
           return reject([request.__("unavailableService"), null]);
         } else {
+          sendEmail(request, userId, request.body.id);
           socketEmit(request.body.id, "activity", "602abccb6bbe06fa92010b7d");
           return resolve();
         }
       });
     } catch (error) {
-      console.log(error);
+      console.error(error);
       return reject([request.__("unavailableService"), null]);
     }
   });
@@ -247,4 +251,51 @@ const socketEmit = (userId, chanel, message) => {
       console.error(error);
     }
   });
+};
+
+const sendEmail = async (request, from, to) => {
+  try {
+    const userFrom = await db
+      .collection("users")
+      .findOne({
+        _id: ObjectId(from),
+      })
+      .then((result) => {
+        return result;
+      });
+    const userTo = await db
+      .collection("users")
+      .findOne({
+        _id: ObjectId(to),
+      })
+      .then((result) => {
+        return result;
+      });
+    if (userTo && userFrom) {
+      postMarkClient.sendEmail({
+        From: config.app.email,
+        To: userTo.email,
+        Subject: request.__("email.connectionRequest.subject", {
+          from: userFrom.username,
+          to: userTo.username,
+          company: config.app.name,
+        }),
+        HtmlBody: request.__("email.connectionRequest.html", {
+          from: userFrom.username,
+          to: userTo.username,
+          company: config.app.name,
+        }),
+        TextBody: request.__("email.connectionRequest.text", {
+          from: userFrom.username,
+          to: userTo.username,
+          company: config.app.name,
+        }),
+        MessageStream: "outbound",
+      });
+    }
+    return;
+  } catch (error) {
+    console.error(error);
+    return;
+  }
 };
