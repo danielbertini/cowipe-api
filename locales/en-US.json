@@ -25,7 +25,7 @@
 	"email.verificationCode.subject": "COWIPE - Hello {{name}}, your verification code is {{code}}.",
 	"email.verificationCode.text": "Hello {{name}}, your verification code is {{code}}. Best regards, {{company}} Team.",
   "email.verificationCode.html": "Hello {{name}}, your verification code is <strong>{{code}}</strong>.<br /><br />Best regards,<br />{{company}} Team.",
-	"email.viewProfile.subject": "COWIPE - {{from}}, you have a new visit.",
-	"email.viewProfile.text": "Hello {{from}}, {{to}} accessed your profile, for more information on {{to}} access your profile and check your activity panel. Best regards, {{company}} Team.",
-	"email.viewProfile.html": "Hello {{from}}, {{to}} accessed your profile, for more information on {{to}} access your profile and check your activity panel.<br /><br />Best regards,<br />{{company}} Team."
+	"email.viewProfile.subject": "COWIPE - {{to}}, you have a new visit.",
+	"email.viewProfile.text": "Hello {{to}}, {{from}} accessed your profile, for more information on {{from}} access your profile and check your activity panel. Best regards, {{company}} Team.",
+	"email.viewProfile.html": "Hello {{to}}, {{from}} accessed your profile, for more information on {{from}} access your profile and check your activity panel.<br /><br />Best regards,<br />{{company}} Team."
 }
