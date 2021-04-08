@@ -16,6 +16,7 @@ module.exports = (() => {
   const tuneSearch = require("../services/user/tuneSearch");
   const updateLocation = require("../services/user/updateLocation");
   const deleteAccount = require("../services/user/deleteAccount");
+  const tips = require("../services/user/tips");
 
   routes.get("/registrationData", cors(corsOptions), registrationData.get);
   routes.put(
@@ -69,6 +70,7 @@ module.exports = (() => {
   routes.put("/tuneSearch", cors(corsOptions), tuneSearch.put);
   routes.put("/updateLocation", cors(corsOptions), updateLocation.put);
   routes.post("/deleteAccount", cors(corsOptions), deleteAccount.do);
+  routes.get("/tips", cors(corsOptions), tips.do);
 
   return routes;
 })();

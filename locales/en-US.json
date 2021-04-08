@@ -36,5 +36,8 @@
 	"email.connectionAccepted.html": "Hello {{to}}, {{from}} accepted your connection request, to know more access your profile and check the activity panel.<br /><br />Best regards,<br />{{company}} Team.",
 	"email.giftReceived.subject": "Cowipe - {{to}}, you received a gift.",
 	"email.giftReceived.text": "Hello {{to}}, {{from}} sent you a gift, to find out more, access your profile and check the gift menu. Best regards, {{company}} Team.",
-	"email.giftReceived.html": "Hello {{to}}, {{from}} sent you a gift, to find out more, access your profile and check the gift menu.<br /><br />Best regards,<br />{{company}} Team."
+	"email.giftReceived.html": "Hello {{to}}, {{from}} sent you a gift, to find out more, access your profile and check the gift menu.<br /><br />Best regards,<br />{{company}} Team.",
+	"email.tipsBonus.subject": "Cowipe - {{name}}, you have received a bonus of 50 coins.",
+	"email.tipsBonus.text": "Congratulations {{name}}, you have received a bonus of 50 coins for completing all the items in the tips panel. Atenciosamente, Equipe {{company}}.",
+	"email.tipsBonus.html": "Congratulations {{name}}, you have received a bonus of 50 coins for completing all the items in the tips panel.<br /><br /> Atenciosamente,<br />Equipe {{company}}."
 }
