@@ -67,6 +67,7 @@ MongoClient.connect(config.database.mongo.url, {
     const whitelist = config.cors.whitelist;
 
     corsOptions = {
+      credentials: true,
       origin: function (origin, callback) {
         if (whitelist.indexOf(origin) !== -1) {
           return callback(null, true);
