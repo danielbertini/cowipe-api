@@ -69,7 +69,6 @@ MongoClient.connect(config.database.mongo.url, {
     corsOptions = {
       credentials: true,
       optionsSuccessStatus: 200,
-      methods: "GET, PUT, POST, DELETE",
       origin: function (origin, callback) {
         if (whitelist.indexOf(origin) !== -1) {
           return callback(null, true);
@@ -126,33 +125,31 @@ MongoClient.connect(config.database.mongo.url, {
 
     // Setup catch errors
 
-    app.use((error, request, response, next) => {
-      logger.fail(new Error(error.stack));
-      response.status(500).send({
-        success: false,
-        description:
-          "Serviço indisponível, já fomos notificados, tente novamente mais tarde. Código: " +
-          error.status +
-          ".",
-      });
-    });
+    // app.use((error, request, response, next) => {
+    //   logger.fail(new Error(error.stack));
+    //   response.status(500).send({
+    //     success: false,
+    //     description:
+    //       "Serviço indisponível, já fomos notificados, tente novamente mais tarde. Código: " +
+    //       error.status +
+    //       ".",
+    //   });
+    // });
 
-    app.use((error, request, response, next) => {
-      logger.fail(new Error(error.stack));
-      response.status(error.status).send({
-        success: false,
-        description:
-          "Serviço indisponível, já fomos notificados, tente novamente mais tarde. Código: " +
-          error.status +
-          ".",
-      });
-    });
+    // app.use((error, request, response, next) => {
+    //   logger.fail(new Error(error.stack));
+    //   response.status(error.status).send({
+    //     success: false,
+    //     description:
+    //       "Serviço indisponível, já fomos notificados, tente novamente mais tarde. Código: " +
+    //       error.status +
+    //       ".",
+    //   });
+    // });
 
     app.use(function (request, response, next) {
       response.status(404).send({
         success: false,
-        description:
-          "Serviço indisponível, já fomos notificados, tente novamente mais tarde. Código: 404.",
       });
     });
 
