@@ -54,7 +54,7 @@ MongoClient.connect(config.database.mongo.url, {
 
     app.use(bodyParser.json({ limit: "20mb", extended: true }));
     app.use(bodyParser.urlencoded({ limit: "20mb", extended: true }));
-    // app.use(cors());
+    app.use(cors());
     app.use(function (req, res, next) {
       res.header("Access-Control-Allow-Origin", "*");
       res.header(
@@ -87,7 +87,7 @@ MongoClient.connect(config.database.mongo.url, {
       },
     };
 
-    app.use(cors(corsOptions));
+    // app.use(cors(corsOptions));
 
     // Setup routes...
 
