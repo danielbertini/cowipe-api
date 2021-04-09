@@ -37,5 +37,11 @@
   },
   "postmark": {
     "api_key": "dcbd60c9-918c-4a92-869c-7c087414d170"
-  }  
+  },
+  "cors": {
+    "whitelist": [
+      "https://cowipe.com",
+      "https://www.cowipe.com"
+    ]
+  }
 }

@@ -1,3 +1,5 @@
+// const { config } = require("aws-sdk");
+
 (express = require("express")),
   (axios = require("axios")),
   (bodyParser = require("body-parser")),
@@ -52,7 +54,7 @@ MongoClient.connect(config.database.mongo.url, {
 
     app.use(bodyParser.json({ limit: "20mb", extended: true }));
     app.use(bodyParser.urlencoded({ limit: "20mb", extended: true }));
-    app.use(cors());
+    // app.use(cors());
     app.use(function (req, res, next) {
       res.header("Access-Control-Allow-Origin", "*");
       res.header(
@@ -71,17 +73,21 @@ MongoClient.connect(config.database.mongo.url, {
 
     // Setup CORS whitelist
 
-    const whitelist = ["http://localhost:3000", "https://agarrei.com"];
+    const whitelist = config.cors.whitelist;
+
     corsOptions = {
       origin: function (origin, callback) {
         if (whitelist.indexOf(origin) !== -1) {
-          callback(null, true);
+          return callback(null, true);
         } else {
-          callback(null, true);
-          // callback(null, false);
+          var msg =
+            "The CORS policy for this site does not allow access from the specified Origin.";
+          return callback(new Error(msg), false);
         }
       },
     };
+
+    app.use(cors(corsOptions));
 
     // Setup routes...
 
@@ -152,7 +158,15 @@ MongoClient.connect(config.database.mongo.url, {
     const server = http.createServer(app);
     io = socketIo(server, {
       cors: {
-        origin: "*",
+        origin: function (origin, callback) {
+          if (whitelist.indexOf(origin) !== -1) {
+            return callback(null, true);
+          } else {
+            var msg =
+              "The CORS policy for this site does not allow access from the specified Origin.";
+            return callback(new Error(msg), false);
+          }
+        },
       },
     });
 
