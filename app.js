@@ -80,6 +80,14 @@ MongoClient.connect(config.database.mongo.url, {
     };
 
     app.use(cors(corsOptions));
+    app.use(function (req, res, next) {
+      res.header("Access-Control-Allow-Origin", "*");
+      res.header(
+        "Access-Control-Allow-Headers",
+        "Origin, X-Requested-With, Content-Type, Accept"
+      );
+      next();
+    });
 
     // Setup i18n
 
