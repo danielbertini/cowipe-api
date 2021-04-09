@@ -52,15 +52,6 @@ MongoClient.connect(config.database.mongo.url, {
 
     app.use(bodyParser.json({ limit: "20mb", extended: true }));
     app.use(bodyParser.urlencoded({ limit: "20mb", extended: true }));
-    // app.use(cors());
-    // app.use(function (req, res, next) {
-    //   res.header("Access-Control-Allow-Origin", "*");
-    //   res.header(
-    //     "Access-Control-Allow-Headers",
-    //     "Origin, X-Requested-With, Content-Type, Accept"
-    //   );
-    //   next();
-    // });
 
     // Setup CORS whitelist
 
@@ -70,7 +61,7 @@ MongoClient.connect(config.database.mongo.url, {
       credentials: true,
       optionsSuccessStatus: 200,
       origin: function (origin, callback) {
-        if (whitelist.indexOf(origin) !== -1) {
+        if (whitelist.indexOf(origin) !== -1 || !origin) {
           return callback(null, true);
         } else {
           var msg =
@@ -124,28 +115,6 @@ MongoClient.connect(config.database.mongo.url, {
     app.use("/gifts", giftsRoutes);
 
     // Setup catch errors
-
-    // app.use((error, request, response, next) => {
-    //   logger.fail(new Error(error.stack));
-    //   response.status(500).send({
-    //     success: false,
-    //     description:
-    //       "Serviço indisponível, já fomos notificados, tente novamente mais tarde. Código: " +
-    //       error.status +
-    //       ".",
-    //   });
-    // });
-
-    // app.use((error, request, response, next) => {
-    //   logger.fail(new Error(error.stack));
-    //   response.status(error.status).send({
-    //     success: false,
-    //     description:
-    //       "Serviço indisponível, já fomos notificados, tente novamente mais tarde. Código: " +
-    //       error.status +
-    //       ".",
-    //   });
-    // });
 
     app.use(function (request, response, next) {
       response.status(404).send({
