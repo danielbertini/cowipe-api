@@ -1,5 +1,3 @@
-// const { config } = require("aws-sdk");
-
 (express = require("express")),
   (axios = require("axios")),
   (bodyParser = require("body-parser")),
@@ -54,22 +52,15 @@ MongoClient.connect(config.database.mongo.url, {
 
     app.use(bodyParser.json({ limit: "20mb", extended: true }));
     app.use(bodyParser.urlencoded({ limit: "20mb", extended: true }));
-    app.use(cors());
-    app.use(function (req, res, next) {
-      res.header("Access-Control-Allow-Origin", "*");
-      res.header(
-        "Access-Control-Allow-Headers",
-        "Origin, X-Requested-With, Content-Type, Accept"
-      );
-      next();
-    });
-
-    i18n.configure({
-      locales: ["en-US", "es", "pt-BR"],
-      queryParameter: "lang",
-      directory: "./locales",
-    });
-    app.use(i18n.init);
+    // app.use(cors());
+    // app.use(function (req, res, next) {
+    //   res.header("Access-Control-Allow-Origin", "*");
+    //   res.header(
+    //     "Access-Control-Allow-Headers",
+    //     "Origin, X-Requested-With, Content-Type, Accept"
+    //   );
+    //   next();
+    // });
 
     // Setup CORS whitelist
 
@@ -87,9 +78,18 @@ MongoClient.connect(config.database.mongo.url, {
       },
     };
 
-    // app.use(cors(corsOptions));
+    app.use(cors(corsOptions));
 
-    // Setup routes...
+    // Setup i18n
+
+    i18n.configure({
+      locales: ["en-US", "es", "pt-BR"],
+      queryParameter: "lang",
+      directory: "./locales",
+    });
+    app.use(i18n.init);
+
+    // Setup routes
 
     const index = require("./routes/index");
     app.use("/", index);
