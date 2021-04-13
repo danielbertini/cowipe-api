@@ -64,9 +64,10 @@ MongoClient.connect(config.database.mongo.url, {
         if (whitelist.indexOf(origin) !== -1 || !origin) {
           return callback(null, true);
         } else {
-          var msg =
-            "The CORS policy for this site does not allow access from the specified Origin.";
-          return callback(new Error(msg), false);
+          return callback(null, true);
+          // var msg =
+          //   "The CORS policy for this site does not allow access from the specified Origin.";
+          // return callback(new Error(msg), false);
         }
       },
     };
