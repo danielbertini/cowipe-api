@@ -87,6 +87,9 @@ MongoClient.connect(config.database.mongo.url, {
     const index = require("./routes/index");
     app.use("/", index);
 
+    const aboutRoutes = require("./routes/about");
+    app.use("/about", aboutRoutes);
+
     const authRoutes = require("./routes/auth");
     app.use("/auth", authRoutes);
 

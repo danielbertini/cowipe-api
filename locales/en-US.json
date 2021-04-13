@@ -39,5 +39,6 @@
 	"email.giftReceived.html": "Hello {{to}}, {{from}} sent you a gift, to find out more, access your profile and check the gift menu.<br /><br />Best regards,<br />{{company}} Team.",
 	"email.tipsBonus.subject": "Cowipe - {{name}}, you have received a bonus of 50 coins.",
 	"email.tipsBonus.text": "Congratulations {{name}}, you have received a bonus of 50 coins for completing all the items in the tips panel. Atenciosamente, Equipe {{company}}.",
-	"email.tipsBonus.html": "Congratulations {{name}}, you have received a bonus of 50 coins for completing all the items in the tips panel.<br /><br /> Atenciosamente,<br />Equipe {{company}}."
+	"email.tipsBonus.html": "Congratulations {{name}}, you have received a bonus of 50 coins for completing all the items in the tips panel.<br /><br /> Atenciosamente,<br />Equipe {{company}}.",
+  "email.talkWithUs.subject": "Cowipe - Talk with us"
 }

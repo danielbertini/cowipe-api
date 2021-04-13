@@ -39,5 +39,6 @@
 	"email.giftReceived.html": "Hola {{to}}, {{from}} te envió un regalo, para saber más, accede a tu perfil y consulta el menú de regalos.<br /><br /> Atentamente,<br />Equipo {{company}}.",
 	"email.tipsBonus.subject": "Cowipe - {{name}}, ha recibido una bonificación de 50 monedas.",
 	"email.tipsBonus.text": "Felicitaciones {{name}}, ha recibido una bonificación de 50 monedas por completar todos los elementos del panel de sugerencias. Atenciosamente, Equipe {{company}}.",
-	"email.tipsBonus.html": "Felicitaciones {{name}}, ha recibido una bonificación de 50 monedas por completar todos los elementos del panel de sugerencias.<br /><br /> Atenciosamente,<br />Equipe {{company}}."
+	"email.tipsBonus.html": "Felicitaciones {{name}}, ha recibido una bonificación de 50 monedas por completar todos los elementos del panel de sugerencias.<br /><br /> Atenciosamente,<br />Equipe {{company}}.",
+	"email.talkWithUs.subject": "Cowipe - Hable con nosotros"
 }
