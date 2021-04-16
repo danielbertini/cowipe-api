@@ -53,7 +53,6 @@ exports.do = (request, response) => {
 const parseForm = (request, userId) => {
   return new Promise(async (resolve, reject) => {
     try {
-      console.log("parseForm");
       const form = new formidable.IncomingForm();
       form.maxFileSize = 5 * 1024 * 1024; //5MB
       form.multipart = false;
@@ -128,7 +127,6 @@ const parseForm = (request, userId) => {
 const removeOldPicture = (request, userId) => {
   return new Promise((resolve, reject) => {
     try {
-      console.log("removeOldPictures");
       db.collection("users")
         .findOne({ _id: ObjectId(userId) }, { projection: { picture: 1 } })
         .then((result) => {
@@ -178,7 +176,6 @@ const removeOldPicture = (request, userId) => {
 const persistNewPicture = (request, userId) => {
   return new Promise((resolve, reject) => {
     try {
-      console.log("persistNewPicture");
       let document = {
         picture: _filename,
       };
@@ -205,7 +202,6 @@ const persistNewPicture = (request, userId) => {
 const getUser = (request, userId) => {
   return new Promise((resolve, reject) => {
     try {
-      console.log("getUser");
       db.collection("users")
         .findOne(
           {
