@@ -13,7 +13,6 @@
     "expiresIn": 0
   },
   "keys": {
-    "bugsnag": "856eb1fb22382b9b5f873bd174d52234",
     "eventRegistry": "493cdfe4-a43b-4018-8eab-a5f78aa74e0f"    
   },
   "database": {
@@ -34,6 +33,9 @@
   },
   "stripe": {
     "key": "sk_live_7QQZoIEsOxK9YXXXit6u8byF"
+  },
+  "bugsnag": {
+    "api_key": "70d82d283aa8ab7ca6ea89bf19ff7fd6"
   },
   "postmark": {
     "api_key": "dcbd60c9-918c-4a92-869c-7c087414d170"

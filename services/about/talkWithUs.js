@@ -31,26 +31,18 @@ const checkParams = (request) => {
     try {
       let params = request.body;
       let rejects = {};
-      if (validate.isEmpty(params.name)) {
-        rejects["name"] = request.__("requiredField");
+      if (validate.isEmpty(params.name)) { rejects["name"] = request.__("requiredField"); }
+      if (validate.isEmpty(params.email)) { rejects["email"] = request.__("requiredField"); } else {
+        if (validate.email(params.email)) { rejects["email"] = request.__("invalidEmail"); }
       }
-      if (validate.isEmpty(params.email)) {
-        rejects["email"] = request.__("requiredField");
-      } else {
-        if (validate.email(params.email)) {
-          rejects["email"] = request.__("invalidEmail");
-        }
-      }
-      if (validate.isEmpty(params.message)) {
-        rejects["message"] = request.__("requiredField");
-      }
+      if (validate.isEmpty(params.message)) { rejects["message"] = request.__("requiredField"); }
       if (Object.entries(rejects).length === 0) {
         return resolve();
       } else {
         return reject([request.__("checkTheForm"), rejects]);
       }
     } catch (error) {
-      console.error(error);
+      log.error(error);
       return reject([request.__("unavailableService"), null]);
     }
   });
@@ -71,7 +63,7 @@ const sendMessage = (request, code) => {
       });
       return resolve(code);
     } catch (error) {
-      console.log(error);
+      log.error(error);
       return reject([request.__("unavailableService"), null]);
     }
   });

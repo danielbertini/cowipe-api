@@ -11,6 +11,7 @@ module.exports = (() => {
   const profile = require("../services/user/profile");
   const activities = require("../services/user/activities");
   const updateStatus = require("../services/user/updateStatus");
+  const updateFirebaseToken = require("../services/user/updateFirebaseToken");
   const messages = require("../services/user/messages");
   const getPlan = require("../services/user/getPlan");
   const tuneSearch = require("../services/user/tuneSearch");
@@ -69,6 +70,7 @@ module.exports = (() => {
   routes.get("/getPlan", cors(corsOptions), getPlan.do);
   routes.put("/tuneSearch", cors(corsOptions), tuneSearch.put);
   routes.put("/updateLocation", cors(corsOptions), updateLocation.put);
+  routes.put("/updateFirebaseToken", cors(corsOptions), updateFirebaseToken.put);
   routes.post("/deleteAccount", cors(corsOptions), deleteAccount.do);
   routes.get("/tips", cors(corsOptions), tips.do);
 

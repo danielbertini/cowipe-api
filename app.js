@@ -9,6 +9,8 @@
   (http = require("http")),
   (https = require("https")),
   (app = express()),
+  (bugsnag = require("bugsnag")),
+  (firebaseAdmin = require('firebase-admin')),
   (MongoClient = require("mongodb").MongoClient);
 
 // Setup config
@@ -22,16 +24,25 @@ switch (process.env.NODE_ENV) {
     break;
 }
 
+// Setup Firebase
+
+const serviceAccount = require('./services/firebase/cowipe-e932b-firebase-adminsdk-3ejxn-b9e8d3f7ec.json');
+
+firebaseAdmin.initializeApp({
+  credential: firebaseAdmin.credential.cert(serviceAccount),
+});
+
+messaging = firebaseAdmin.messaging();
+
 // Setup utils
 
-logger = require("./utils/logger");
+log = require("./utils/log");
 validate = require("./utils/validate");
 sanitizer = require("./utils/sanitizer");
 
-// // Setup Bugsnag
+// Setup Bugsnag
 
-// bugsnag = require("bugsnag");
-// bugsnag.register(config.keys.bugsnag);
+bugsnag.register(config.bugsnag.api_key);
 
 // Setup and connect to database before start APP
 
@@ -189,7 +200,6 @@ MongoClient.connect(config.database.mongo.url, {
     // on app stop
 
     process.on("SIGINT", () => {
-      logger.log("APP stopped");
       dbClient.close();
       process.exit();
     });
@@ -244,6 +254,9 @@ function persistMessage(roomId, _from, _to, message) {
               _id: result.ops[0]._to,
             })
             .then((user) => {
+              if (user.firebaseToken) {
+                sendNotification(user, result.ops[0].message)
+              }
               if (user && user._id && user.online && user.socketId) {
                 io.to(user.socketId).emit("message", {
                   _id: result.ops[0]._id,
@@ -261,6 +274,21 @@ function persistMessage(roomId, _from, _to, message) {
   } catch (error) {
     console.error(error);
   }
+}
+
+function sendNotification (user, message) {
+  var tokens = [];
+  var data = { title: 'Nova mensagem', body: message };
+  tokens.push(user.firebaseToken);
+  messaging
+  .sendMulticast({ tokens, data })
+  .then(response => {
+    const successes = response.responses.filter(r => r.success === true).length;
+    const failures = response.responses.filter(r => r.success === false).length;
+  })
+  .catch(error => {
+    console.log('Error sending message:', error);
+  });  
 }
 
 function markMessageAsReaded(id) {
