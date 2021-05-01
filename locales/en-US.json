@@ -40,5 +40,6 @@
 	"email.tipsBonus.subject": "Cowipe - {{name}}, you have received a bonus of 50 coins.",
 	"email.tipsBonus.text": "Congratulations {{name}}, you have received a bonus of 50 coins for completing all the items in the tips panel. Atenciosamente, Equipe {{company}}.",
 	"email.tipsBonus.html": "Congratulations {{name}}, you have received a bonus of 50 coins for completing all the items in the tips panel.<br /><br /> Atenciosamente,<br />Equipe {{company}}.",
-  "email.talkWithUs.subject": "Cowipe - Talk with us"
+  "email.talkWithUs.subject": "Cowipe - Talk with us",
+  "notification.newMessage": "You have received a new message."
 }

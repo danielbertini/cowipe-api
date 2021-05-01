@@ -278,7 +278,7 @@ function persistMessage(roomId, _from, _to, message) {
 
 function sendNotification (user, message) {
   var tokens = [];
-  var data = { title: 'Nova mensagem', body: message };
+  var data = { title: 'Cowipe', body: message };
   tokens.push(user.firebaseToken);
   messaging
   .sendMulticast({ tokens, data })

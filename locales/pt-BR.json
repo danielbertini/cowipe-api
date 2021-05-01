@@ -40,5 +40,6 @@
 	"email.tipsBonus.subject": "Cowipe - {{name}}, você recebeu um bônus de 50 moedas.",
 	"email.tipsBonus.text": "Parabéns {{name}}, você recebeu um bônus de 50 moedas por ter completado todos os ítems do painel de dicas. Atenciosamente, Equipe {{company}}.",
 	"email.tipsBonus.html": "Parabéns {{name}}, você recebeu um bônus de 50 moedas por ter completado todos os ítems do painel de dicas.<br /><br /> Atenciosamente,<br />Equipe {{company}}.",
-	"email.talkWithUs.subject": "Cowipe - Fale conosco"
+	"email.talkWithUs.subject": "Cowipe - Fale conosco",
+	"notification.newMessage": "Você recebeu uma nova mensagem."
 }
