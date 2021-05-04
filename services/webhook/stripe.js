@@ -16,7 +16,7 @@ exports.do = (request, response) => {
     }
     response.json({ received: true });
   } catch (error) {
-    console.error(error);
+    log.error(error);
     response.json({ received: false });
   }
 };
@@ -31,14 +31,14 @@ const persistIntent = (data) => {
     };
     db.collection("intents").insertOne(document, (error) => {
       if (error) {
-        console.log(error);
+        log.error(error);
         return;
       } else {
         return;
       }
     });
   } catch (error) {
-    console.error(error);
+    log.error(error);
     return;
   }
 };
@@ -54,7 +54,7 @@ const updateIntent = (data) => {
       { upsert: false },
       (error) => {
         if (error) {
-          console.error(error);
+          log.error(error);
           return;
         } else {
           return;
@@ -62,7 +62,7 @@ const updateIntent = (data) => {
       }
     );
   } catch (error) {
-    console.error(error);
+    log.error(error);
     return;
   }
 };
@@ -97,7 +97,7 @@ const charge = (data) => {
                   { upsert: false },
                   (error) => {
                     if (error) {
-                      console.error(error);
+                      log.error(error);
                       return;
                     } else {
                       return;
@@ -105,17 +105,17 @@ const charge = (data) => {
                   }
                 );
               } else {
-                console.error(error);
+                log.error(error);
                 return;
               }
             });
         } else {
-          console.error(error);
+          log.error(error);
           return;
         }
       });
   } catch (error) {
-    console.error(error);
+    log.error(error);
     return;
   }
 };

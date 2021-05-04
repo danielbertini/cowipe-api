@@ -26,7 +26,7 @@ exports.do = (request, response) => {
         });
       });
   } catch (error) {
-    console.error(error);
+    log.error(error);
     response.status(500).send({
       success: false,
       message: request.__("unavailableService"),
@@ -55,7 +55,7 @@ const checkParams = (request) => {
         reject([request.__("checkTheForm"), rejects]);
       }
     } catch (error) {
-      console.error(error);
+      log.error(error);
       reject([request.__("unavailableService"), null]);
     }
   });
@@ -123,7 +123,7 @@ const checkAccess = (request) => {
           }
         });
     } catch (error) {
-      console.error(error);
+      log.error(error);
       reject([request.__("unavailableService"), null]);
     }
   });
@@ -148,7 +148,7 @@ const createToken = (request, document) => {
         return reject([request.__("unavailableService"), null]);
       }
     } catch (error) {
-      console.error(error);
+      log.error(error);
       reject([request.__("unavailableService"), null]);
     }
   });
@@ -191,8 +191,8 @@ const getLocationById = (request, document) => {
                 { upsert: false },
                 (error) => {
                   if (error) {
-                    console.error(error);
-                    return resolve(document);
+                    log.error(error);
+                    reject([request.__("unavailableService"), null]);
                   } else {
                     return resolve(document);
                   }
@@ -203,14 +203,14 @@ const getLocationById = (request, document) => {
             }
           })
           .catch(function (error) {
-            console.error(error);
+            log.error(error);
             return resolve(document);
           });
       } else {
         return resolve(document);
       }
     } catch (error) {
-      console.error(error);
+      log.error(error);
       reject([request.__("unavailableService"), null]);
     }
   });

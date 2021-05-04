@@ -19,7 +19,7 @@ exports.do = (request, response) => {
         });
       });
   } catch (error) {
-    console.error(error);
+    log.error(error);
     response.status(500).send({
       success: false,
       message: request.__("unavailableService"),
@@ -48,7 +48,7 @@ const checkParams = (request) => {
         return reject([request.__("checkTheForm"), rejects]);
       }
     } catch (error) {
-      console.error(error);
+      log.error(error);
       return reject([request.__("unavailableService"), null]);
     }
   });
@@ -71,7 +71,7 @@ const checkData = (request) => {
           }
         });
     } catch (error) {
-      console.error(error);
+      log.error(error);
       return reject([request.__("unavailableService"), null]);
     }
   });
@@ -98,7 +98,7 @@ const persistVerificationCode = (request) => {
             };
             db.collection("verificationCodes").insertOne(document, (error) => {
               if (error) {
-                console.log(error);
+                log.error(error);
                 return reject([request.__("unavailableService"), null]);
               } else {
                 sendVerificationCode(request, code);
@@ -108,7 +108,7 @@ const persistVerificationCode = (request) => {
           }
         });
     } catch (error) {
-      console.log(error);
+      log.error(error);
       return reject([request.__("unavailableService"), null]);
     }
   });
@@ -139,7 +139,7 @@ const sendVerificationCode = (request, code) => {
       });
       return resolve(code);
     } catch (error) {
-      console.log(error);
+      log.error(error);
       return reject([request.__("unavailableService"), null]);
     }
   });

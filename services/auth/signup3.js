@@ -16,7 +16,7 @@ exports.do = (request, response) => {
         });
       });
   } catch (error) {
-    console.error(error);
+    log.error(error);
     return response.status(500).send({
       success: false,
       message: request.__("unavailableService"),
@@ -50,7 +50,7 @@ const checkParams = (request) => {
         return reject([request.__("checkTheForm"), rejects]);
       }
     } catch (error) {
-      console.error(error);
+      log.error(error);
       return reject([request.__("unavailableService"), null]);
     }
   });

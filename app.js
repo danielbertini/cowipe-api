@@ -161,7 +161,7 @@ MongoClient.connect(config.database.mongo.url, {
           config.jwt.secret,
           function (error, decoded) {
             if (error) {
-              console.error(`[ws] - ${new Date()} - ${error}`);
+              log.error(error);
               next(new Error(error));
             } else {
               socket.decoded = decoded;
@@ -205,7 +205,7 @@ MongoClient.connect(config.database.mongo.url, {
     });
   })
   .catch((error) => {
-    console.error(`[api] ${new Date()} - error ${error}`);
+    log.error(error);
   });
 
 function updateUserStatus(userId, socketId, status) {
@@ -222,7 +222,9 @@ function updateUserStatus(userId, socketId, status) {
   db.collection("users")
     .updateOne(query, update)
     .then((result, error) => {
-      if (error) console.error(`[ws] ${new Date()} - error ${error}`);
+      if (error) {
+        log.error(error);
+      };
     });
 }
 
@@ -238,7 +240,7 @@ function persistMessage(roomId, _from, _to, message) {
     };
     db.collection("messages").insertOne(document, (error, result) => {
       if (error) {
-        console.error(error);
+        log.error(error);
       } else {
         if (result.ops[0]) {
           io.to(roomId).emit("rooms_message", {
@@ -272,23 +274,29 @@ function persistMessage(roomId, _from, _to, message) {
       }
     });
   } catch (error) {
-    console.error(error);
+    log.error(error);
   }
 }
 
 function sendNotification (user, message) {
-  var tokens = [];
-  var data = { title: 'Cowipe', body: message };
-  tokens.push(user.firebaseToken);
-  messaging
-  .sendMulticast({ tokens, data })
-  .then(response => {
-    const successes = response.responses.filter(r => r.success === true).length;
-    const failures = response.responses.filter(r => r.success === false).length;
-  })
-  .catch(error => {
-    console.log('Error sending message:', error);
-  });  
+  try {
+    var tokens = [];
+    var data = { title: 'Cowipe', body: message };
+    if (user.firebaseToken) {
+      tokens.push(user.firebaseToken);
+      messaging
+      .sendMulticast({ tokens, data })
+      .then(response => {
+        const successes = response.responses.filter(r => r.success === true).length;
+        const failures = response.responses.filter(r => r.success === false).length;
+      })
+      .catch(error => {
+        log.error(error);
+      });  
+    }
+  } catch (error) {
+    log.error(error);
+  }  
 }
 
 function markMessageAsReaded(id) {
@@ -302,11 +310,11 @@ function markMessageAsReaded(id) {
       { upsert: false },
       (error, result) => {
         if (error) {
-          console.error(error);
+          log.error(error);
         }
       }
     );
   } catch (error) {
-    console.error(error);
+    log.error(error);
   }
 }

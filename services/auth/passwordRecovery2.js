@@ -20,7 +20,7 @@ exports.do = (request, response) => {
         });
       });
   } catch (error) {
-    console.error(error);
+    log.error(error);
     response.status(500).send({
       success: false,
       message: request.__("unavailableService"),
@@ -52,7 +52,7 @@ const checkParams = (request) => {
         return reject([request.__("checkTheForm"), rejects]);
       }
     } catch (error) {
-      console.error(error);
+      log.error(error);
       return reject([request.__("unavailableService"), null]);
     }
   });
@@ -79,6 +79,7 @@ const checkCode = (request) => {
           }
         });
     } catch (error) {
+      log.error(error);
       return reject([request.__("unavailableService"), null]);
     }
   });
@@ -107,11 +108,11 @@ const updateCodeChecked = (request) => {
           }
         })
         .catch((error) => {
-          console.log(error);
+          log.error(error);
           return reject([request.__("unavailableService"), null]);
         });
     } catch (error) {
-      console.log(error);
+      log.error(error);
       return reject([request.__("unavailableService"), null]);
     }
   });
@@ -130,7 +131,7 @@ const updatePassword = (request) => {
         { upsert: false },
         (error) => {
           if (error) {
-            console.error(error);
+            log.error(error);
             return reject([request.__("unavailableService"), null]);
           } else {
             return resolve();
@@ -138,6 +139,7 @@ const updatePassword = (request) => {
         }
       );
     } catch (error) {
+      log.error(error);
       return reject([request.__("unavailableService"), null]);
     }
   });
@@ -150,15 +152,15 @@ const cleanCheckedCodes = (request) => {
         { checked: true },
         (error) => {
           if (error) {
-            console.log(error);
-            return reject(["Serviço indisponível", null]);
+            log.error(error);
+            return reject([request.__("unavailableService"), null]);
           } else {
             return resolve();
           }
         }
       );
     } catch (error) {
-      console.log(error);
+      log.error(error);
       return reject([request.__("unavailableService"), null]);
     }
   });

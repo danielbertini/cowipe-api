@@ -21,7 +21,7 @@ exports.do = (request, response) => {
         });
       });
   } catch (error) {
-    console.error(error);
+    log.error(error);
     return response.status(500).send({
       success: false,
       message: request.__("unavailableService"),
@@ -69,7 +69,7 @@ const checkParams = (request) => {
         return reject([request.__("checkTheForm"), rejects]);
       }
     } catch (error) {
-      console.error(error);
+      log.error(error);
       return reject([request.__("unavailableService"), null]);
     }
   });
@@ -94,7 +94,7 @@ const checkUsername = (request) => {
           }
         });
     } catch (error) {
-      console.log(error);
+      log.error(error);
       return reject([request.__("unavailableService"), null]);
     }
   });
@@ -119,7 +119,7 @@ const checkEmail = (request) => {
           }
         });
     } catch (error) {
-      console.log(error);
+      log.error(error);
       return reject([request.__("unavailableService"), null]);
     }
   });
@@ -146,7 +146,7 @@ const persistVerificationCode = (request, code) => {
             };
             db.collection("verificationCodes").insertOne(document, (error) => {
               if (error) {
-                console.log(error);
+                log.error(error);
                 return reject([request.__("unavailableService"), null]);
               } else {
                 sendVerificationCode(request, code);
@@ -156,7 +156,7 @@ const persistVerificationCode = (request, code) => {
           }
         });
     } catch (error) {
-      console.log(error);
+      log.error(error);
       return reject([request.__("unavailableService"), null]);
     }
   });
@@ -188,13 +188,13 @@ const sendVerificationCode = (request, code) => {
         },
         (error, response) => {
           if (error) {
-            console.error(error);
+            log.error(error);
           }
           return resolve(code);
         }
       );
     } catch (error) {
-      console.log(error);
+      log.error(error);
       return reject([request.__("unavailableService"), null]);
     }
   });

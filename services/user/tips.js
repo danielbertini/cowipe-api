@@ -44,7 +44,6 @@ exports.do = (request, response) => {
             .catch((result) => {
               response.status(200).send({
                 success: false,
-                blocked: _blocked,
                 message: result[0],
                 errors: result[1],
               });
@@ -53,7 +52,7 @@ exports.do = (request, response) => {
       }
     );
   } catch (error) {
-    console.error(error);
+    log.error(error);
     response.status(500).send({
       success: false,
       message: request.__("unavailableService"),
@@ -79,7 +78,7 @@ const getProfile = (request, userId) => {
           }
         });
     } catch (error) {
-      console.log(error);
+      log.error(error);
       return reject([request.__("unavailableService"), null]);
     }
   });
@@ -98,7 +97,7 @@ const getPictures = (request, userId) => {
           return resolve();
         });
     } catch (error) {
-      console.log(error);
+      log.error(error);
       return reject([request.__("unavailableService"), null]);
     }
   });
@@ -124,7 +123,7 @@ const getConnections = (request, userId) => {
           return resolve();
         });
     } catch (error) {
-      console.log(error);
+      log.error(error);
       return reject([request.__("unavailableService"), null]);
     }
   });
@@ -143,7 +142,7 @@ const getGifts = (request, userId) => {
           return resolve();
         });
     } catch (error) {
-      console.log(error);
+      log.error(error);
       return reject([request.__("unavailableService"), null]);
     }
   });
@@ -162,7 +161,7 @@ const getMessages = (request, userId) => {
           return resolve();
         });
     } catch (error) {
-      console.log(error);
+      log.error(error);
       return reject([request.__("unavailableService"), null]);
     }
   });
@@ -182,7 +181,7 @@ const parseBonus = (request, userId) => {
           { upsert: false },
           (error, result) => {
             if (error) {
-              console.error(error);
+              log.error(error);
               return reject([request.__("unavailableService"), null]);
             } else {
               sendEmail(request);
@@ -195,7 +194,7 @@ const parseBonus = (request, userId) => {
         return resolve();
       }
     } catch (error) {
-      console.log(error);
+      log.error(error);
       return reject([request.__("unavailableService"), null]);
     }
   });
@@ -219,6 +218,6 @@ const sendEmail = (request) => {
     });
     return;
   } catch (error) {
-    console.error(error);
+    log.error(error);
   }
 };
